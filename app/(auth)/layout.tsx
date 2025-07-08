@@ -4,13 +4,13 @@ import React from "react";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className=" flex min-h-screen  ">
-      <section className='bg-brand ' >
+      <section className='bg-brand p-10' >
         <div>
           <Image
-            src="/favicon.ico"
+            src="/logo.png"
             alt="logo"
-            width={16}
-            height={16}
+            width={224}
+            height={82}
             className="h-auto"
           />
           <div className='space-y-5 text-white ' >
