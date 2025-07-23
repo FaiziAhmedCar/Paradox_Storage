@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -35,13 +35,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </section>
       <section className="flex flex-1 flex-col items-center bg-white p-4 py-10 lg:justify-center lg:p-10 lg:py-0">
-        <div className="mb-16 lg:hidden">
+        <div className="mb-5 lg:hidden ">
           <Image
             src="/logo1.png"
             alt="logo"
-            width={224}
+            width={100}
             height={82}
-            className="h-auto w-[200px] lg:w-[250px]"
+            className="h-auto w-[150px] lg:w-[250px]"
           ></Image>
         </div>
         {children}

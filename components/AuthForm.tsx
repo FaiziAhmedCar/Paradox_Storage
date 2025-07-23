@@ -1,7 +1,8 @@
-"use client"
-
-import { z } from "zod"
-import { Button } from "@/components/ui/button"
+"use client";
+import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -10,33 +11,35 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import React from 'react'
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { z } from "zod";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
-})
-
-type FormType = 'sign-in' | 'sign-up';
-const AuthForm = ({type}:{type:FormType}) => {
-
-    const form = useForm<z.infer<typeof formSchema>>({
+});
+type FormType = "sign-in" | "sign-up";
+const authForm = ({ type }: { type: FormType }) => {
+  
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
     },
-  })
- 
-  
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    
-    console.log(values)
-  }
+  });
+
+  // 2. Define a submit handler.
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+  };
   return (
+    <> 
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
+      <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
+        <h1 className="form-title" >
+          {type === "sign-in" ? "Sign In" : "Sign Up"}
+        </h1>
+        {type=== 'sign-up' &&( <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
@@ -51,11 +54,13 @@ const AuthForm = ({type}:{type:FormType}) => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        />)}
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
-}
+    OTP Verification here
+    </>
+  );
+};
 
-export default AuthForm
+export default authForm;
