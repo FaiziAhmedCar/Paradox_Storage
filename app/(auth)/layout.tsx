@@ -6,16 +6,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className=" flex h-screen overflow-hidden">
       <section className="hidden w-1/2 items-center justify-center bg-brand p-10 lg:flex xl:w-2/5">
-        <div className="flex max-h-[800px] max-w-[430px] flex-col justify-center space-y-7">
-          <Link href="/sign-in">
+        <div className="flex max-h-[800px] max-w-[430px] flex-col   justify-center space-y-7">
+          {/* <Link href="/sign-in"> */}
+            {/* <div className=""> */}
+
             <Image
               src="/logoAuth.png"
               alt="logo"
-              width={200}
+              width={150}
               height={200}
-              className=" transition-all duration-500  hover:scale-150 sm:size-20 md:size-32 lg:size-40"
-            />
-          </Link>
+              className="flex"
+              />
+              {/* </div> */}
+          {/* </Link> */}
           <div className="space-y-5 text-white ">
             <h1 className="h1">Manage your files the best way</h1>
             <p className="body-1">
@@ -25,8 +28,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Image
             src="/assets/images/files-2.png"
             alt="files"
-            width={342}
-            height={342}
+            width={300}
+            height={300}
             className="transition-all duration-500 hover:rotate-12 hover:scale-110"
           />
         </div>
