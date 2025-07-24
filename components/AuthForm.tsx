@@ -16,6 +16,8 @@ import { z } from "zod";
 import Image from "next/image";
 import Link from "next/link";
 import { createAccount } from "@/lib/actions/user.action";
+import OTPModal from './OTPModal';
+
 
 type FormType = "sign-in" | "sign-up";
 
@@ -29,7 +31,7 @@ const authFormSchema = (formType: FormType) => {
   });
 };
 
-const authForm = ({ type }: { type: FormType }) => {
+const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setisLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [accountId, setaccountId] = useState(null);
@@ -140,9 +142,12 @@ const authForm = ({ type }: { type: FormType }) => {
           </div>
         </form>
       </Form>
-      OTP Verification here
+      <div className="mb-7 flex w-full items-center justify-center" >
+        
+      {accountId && <OTPModal email={form.getValues("email")}  accountId={accountId}  /> }
+      </div>
     </>
   );
 };
 
-export default authForm;
+export default AuthForm;
