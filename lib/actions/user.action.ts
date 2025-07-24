@@ -20,14 +20,14 @@ const getUserByEmail = async (email: string) => {
     const result = await databases.listDocuments(
         appwriteConfig.database
         , appwriteConfig.usersCollection,
-        [Query.equal('email', email)]
+        [Query.equal('email', [email])]
     )
     return result.total > 0 ? result.documents[0] : null;
 }
 
 const handleError= (error: unknown, message: string) => {
     console.error(message, error);
-    throw new Error(message);
+    throw error instanceof Error ? error : new Error(message);
 }
 const sendEmailOTP = async ({ email }: { email: string }) => {
     const { account } = await createAdminClient();
@@ -57,10 +57,10 @@ export const createAccount = async (fullName: string, email: string) => {
                     email,
                     avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&size=128&background=random`,
                     accountId: account,
-                    createdAt: new Date().toISOString(),
                 }
             );
-        } catch (error) {
+        }   
+        catch (error) {
             handleError(error, `Failed to create user document for ${email}`);
         }
     }
