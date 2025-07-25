@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
-import Sidebar from "@/components/SideBar";
+import Sidebar from "@/components/Sidebar";
+
 
 
 import React from "react";

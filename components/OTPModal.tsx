@@ -95,20 +95,25 @@ const OTPModal = ({
               type="button"
             >
               Submit
-              {IsLoading && <Image
-                src="/assets/icons/loader.svg"
-                alt="loader"
-                width={24}
-                height={24}
-                className="ml-2 animate-spin"
-              />}
+              {IsLoading && (
+                <Image
+                  src="/assets/icons/loader.svg"
+                  alt="loader"
+                  width={24}
+                  height={24}
+                  className="ml-2 animate-spin"
+                />
+              )}
             </AlertDialogAction>
-            <div className="subtitle-2 mt-2 text-center text-light-100" >
+            <div className="subtitle-2 mt-2 text-center text-light-100">
               Didn&apos;t receive the OTP?
-              <Button  type="button" variant="link" className="pl-1 text-brand " 
-              onClick={handleResendOTP} >
+              <Button
+                type="button"
+                variant="link"
+                className="pl-1 text-brand "
+                onClick={handleResendOTP}
+              >
                 Click to resend
-
               </Button>
             </div>
           </div>
